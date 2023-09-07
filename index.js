@@ -1,13 +1,13 @@
+// Getting the elements to be manipulated from the DOM
 const computerChoiceEl = document.querySelector("#computer-choice img")
 const playerChoiceEl = document.querySelector("#player-choice img")
 const resultEl = document.querySelector("#result h1")
-
 const possibleOptions = document.querySelectorAll("button")
 
 let userChoice
 let computerChoice
 
-
+// Adding to each button an event listener that calls the appropriate functions in order for the game to proceed
 possibleOptions.forEach(possbleOption => possbleOption.addEventListener("click", function(e) {
     userChoice = e.target.id
     computerChoice = generateComputerChoice()
@@ -19,11 +19,13 @@ possibleOptions.forEach(possbleOption => possbleOption.addEventListener("click",
 
 }))
 
+// Returns a random option from rock, paper, scissors
 function generateComputerChoice() {
     let random = Math.floor(Math.random() *3)
     return possibleOptions[random].id
 }
 
+// finds out the winner and displays it on the screen
 function chooseWinner(userChoice, computerChoice) {
 
     if(userChoice == computerChoice) {
