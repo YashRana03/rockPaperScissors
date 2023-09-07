@@ -1,23 +1,39 @@
 // Getting the elements to be manipulated from the DOM
-const computerChoiceEl = document.querySelector("#computer-choice img")
-const playerChoiceEl = document.querySelector("#player-choice img")
+const computerChoiceEl = document.querySelector("#computer-choice")
+const playerChoiceEl = document.querySelector("#player-choice")
 const resultEl = document.querySelector("#result h1")
 const possibleOptions = document.querySelectorAll("button")
 
-let userChoice
+let playerChoice
 let computerChoice
 
 // Adding to each button an event listener that calls the appropriate functions in order for the game to proceed
 possibleOptions.forEach(possbleOption => possbleOption.addEventListener("click", function(e) {
-    userChoice = e.target.id
+    playerChoice = e.target.id
     computerChoice = generateComputerChoice()
-    playerChoiceEl.src = `${userChoice}.png`
-    computerChoiceEl.src = `${computerChoice}.png`
-    chooseWinner(userChoice, computerChoice);
+    renderChoice(playerChoice, computerChoice);
+    chooseWinner(playerChoice, computerChoice);
 
 
 
 }))
+
+// Renders the choices on the screen
+function renderChoice(plrChoice, compChoice) {
+
+    let toBeRemoved = playerChoiceEl.querySelector("img")
+    if(toBeRemoved != null) {
+        toBeRemoved.remove()
+        computerChoiceEl.querySelector("img").remove()
+    }
+    
+    let img1 = document.createElement("img")
+    let img2 = document.createElement("img")
+    img1.src = `${plrChoice}.png`
+    playerChoiceEl.appendChild(img1)
+    img2.src = `${compChoice}.png`
+    computerChoiceEl.appendChild(img2)
+}
 
 // Returns a random option from rock, paper, scissors
 function generateComputerChoice() {
