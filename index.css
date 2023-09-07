@@ -20,6 +20,7 @@ body {
     border: 3px solid black;
     border-radius: 5px;
     padding: 40px;
+    
 
     
 }
@@ -45,6 +46,10 @@ img {
 
 #result {
     margin-bottom: 100px;
+}
+
+#result h1 {
+    color: coral;
 }
 
 button {
@@ -81,7 +86,7 @@ button {
     button:first-of-type {
         margin-top: 50px;
     }
-    
+
     button {
         margin: 15px 5px;
     }
